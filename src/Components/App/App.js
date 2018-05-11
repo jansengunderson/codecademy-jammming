@@ -15,7 +15,7 @@ class App extends React.Component {
     searchResults:[],
     playlistTracks: [],
     playlistName: [
-      'Playlist Name'
+      'Edit Me'
     ]
 }
 this.addTrack = this.addTrack.bind(this);
@@ -27,14 +27,15 @@ this.search = this.search.bind(this);
 
 // add the track if it is not already in the playlist
 addTrack(track) {
-  if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
+  let tracks = this.state.playlistTracks;
+  let results = this.state.searchResults;
+  if (tracks.find(savedTrack => savedTrack.id === track.id)) {
     return;
-  } else {
-    let tracks = this.state.playlistTracks;
+  }
     tracks.push(track); // if the id is new, add song to the end of the playlist
     this.setState({playlistTracks: tracks}); // sets the new state of the playlist
-  }
 }
+
 
 // removes a song from a custom playlist when the user selects the - sign inside of a rendered track
 removeTrack(track) {

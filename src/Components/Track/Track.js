@@ -9,16 +9,6 @@ class Track extends React.Component {
     this.removeTrack = this.removeTrack.bind(this);
 
   }
-  // method to change + and - symbols
-  renderAction() {
-    if (this.props.isRemoval) {
-      return  ( <a className="Track-action" onClick={this.removeTrack}> - </a>
-      );
-    } else {
-      return ( <a className="Track-action" onClick={this.addTrack}> + </a>
-      );
-      }
-  };
 
 addTrack() {
   this.props.onAdd(this.props.track);
@@ -26,6 +16,15 @@ addTrack() {
 
 removeTrack() {
   this.props.onRemove(this.props.track);
+}
+
+// method to change + and - symbols
+renderAction() {
+  if (this.props.isRemoval) {
+    return  (<a className="Track-action" onClick={this.removeTrack}>-</a>);
+  } else {
+    return (<a className="Track-action" onClick={this.addTrack}>+</a>);
+    }
 }
 
   render() {
@@ -36,7 +35,7 @@ removeTrack() {
     <h3>{`${this.props.track.Name}`}</h3>
     <p>{`${this.props.track.Artist} | ${this.props.track.Album}`}</p>
   </div>
-  <a className='Track-Action'>{this.renderAction()}</a>
+  {this.renderAction()}
 </div>
 
     );
