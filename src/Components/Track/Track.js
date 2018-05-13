@@ -32,8 +32,8 @@ renderAction() {
     return (
       <div className="Track">
   <div className="Track-information">
-    <h3>{`${this.props.track.Name}`}</h3>
-    <p>{`${this.props.track.Artist} | ${this.props.track.Album}`}</p>
+    <h3>{this.props.track.Name}</h3>
+    <p>{this.props.track.Artist} | {this.props.track.Album}</p>
   </div>
   {this.renderAction()}
 </div>

@@ -13,10 +13,10 @@ class App extends React.Component {
     super(props);
       this.state = {
     searchResults:[],
-    playlistTracks: [],
     playlistName: [
       'Edit Me'
-    ]
+    ],
+    playlistTracks: []
 }
 this.addTrack = this.addTrack.bind(this);
 this.removeTrack = this.removeTrack.bind(this);
@@ -26,16 +26,16 @@ this.search = this.search.bind(this);
 };
 
 // add the track if it is not already in the playlist
-addTrack(track) {
-    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === this.state.playlistTracks.id)) {
+addTrack(track){
+    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
       return;
     } else {
-      let tracks = this.state.playlistTracks;
+      let tracks = [...this.state.playlistTracks]; // ES6 spread operator
       tracks.push(track);
-      this.setState({ playlistTracks: tracks });
-      return;
+      this.setState({playlistTracks: tracks});
     }
   }
+
 
 
 // removes a song from a custom playlist when the user selects the - sign inside of a rendered track
@@ -53,9 +53,14 @@ updatePlaylistName(name) {
 }
 
 // saves playlist to user's Spotify account
-savePlaylist() {
+savePlaylist(){
   let playlistName = this.state.playlistName;
-  const trackURIs = [];
+  let trackURIs = this.state.playlistTracks.map(track => track.uri);
+  Spotify.savePlaylist(playlistName, trackURIs);
+     this.setState({
+      playlistName: 'New Playlist',
+      playlistTracks : []
+    })
 }
 
 // searches Spotify
@@ -72,7 +77,7 @@ render() {
           <SearchBar onSearch={this.search}/>
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
-            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName}/>
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onSave={this.savePlaylist}/>
           </div>
         </div>
       </div>
