@@ -26,13 +26,19 @@ this.search = this.search.bind(this);
 };
 
 // add the track if it is not already in the playlist
-addTrack(track){
+/* addTrack(track){
     if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
       return;
     } else {
       let tracks = [...this.state.playlistTracks]; // ES6 spread operator
       tracks.push(track);
       this.setState({playlistTracks: tracks});
+    }
+  } */
+
+  addTrack(track) {
+    if (this.state.playlistTracks.indexOf(track) === -1) {
+      this.setState({playlistTracks: this.state.playlistTracks.concat(track)});
     }
   }
 
