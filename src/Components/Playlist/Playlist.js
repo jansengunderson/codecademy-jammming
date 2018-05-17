@@ -29,7 +29,7 @@ class Playlist extends React.Component {
       <div className="Playlist">
         <input value={this.props.playlistName} onChange={this.handleNameChange}/>
           <TrackList tracks={this.props.playlistTracks} onAdd={this.props.onAdd} onRemove={this.props.onRemove} isRemoval={true}/>
-        <a className="Playlist-save" onClick={this.props.onSave, this.buttonSuccess}>SAVE TO SPOTIFY</a>
+        <a className="Playlist-save" onClick={this.props.onSave this.buttonSuccess}>SAVE TO SPOTIFY</a>
       </div>
     );
   }
