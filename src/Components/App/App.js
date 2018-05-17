@@ -65,8 +65,9 @@ savePlaylist(){
   Spotify.savePlaylist(playlistName, trackURIs);
      this.setState({
       playlistName: 'New Playlist',
-      playlistTracks : []
-    })
+      playlistTracks : [],
+    });
+    return <a className="Playlist-save" onclick={this.onSave}>Saved to Spotify!</a>
 }
 
 // searches Spotify

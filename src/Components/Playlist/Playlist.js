@@ -8,20 +8,12 @@ class Playlist extends React.Component {
     super(props);
 
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.buttonSuccess = this.buttonSuccess.bind(this);
   }
 
   handleNameChange(e){
     const name = e.target.value;
     this.props.onNameChange(name);
   }
-
-  buttonSuccess() {
-    this.setState(
-      <a className="Playlist-save" onclick={this.props.onSave, this.buttonSuccess}>Saved to Spotify!</a>
-    )
-  }
-
 
 
   render() {
