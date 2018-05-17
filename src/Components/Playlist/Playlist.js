@@ -8,6 +8,7 @@ class Playlist extends React.Component {
     super(props);
 
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.buttonSuccess = this.buttonSuccess.bind(this);
   }
 
   handleNameChange(e){
