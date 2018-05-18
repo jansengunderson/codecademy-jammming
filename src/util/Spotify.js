@@ -53,30 +53,26 @@ savePlaylist(playlistName, trackURIs) {
   let userID;
   const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}` }
 
-  // Send to request to SPOTIFY
   return fetch('https://api.spotify.com/v1/me', {
       headers: headers
     }).then(response => response.json()
   ).then(jsonResponse => {
 
-  // send userID to Spotify
     userID = jsonResponse.id;
     console.log('this is your user ID:' + userID);
   })
 
-  // send playlist name to Spotify
   .then(jsonResponse => {
     return fetch(`https://api.spotify.com/v1/users/${userID}/playlists`, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({name: playlistName})
    })
-  // response to JSON
+
    .then(response => {
        return response.json()
      })
 
-  // Send tracks in playlist to Spotify
   .then(jsonResponse => {
       const playlistID = jsonResponse.id;
       return fetch(`https://api.spotify.com/v1/users/${userID}/playlists/${playlistID}/tracks`, {

@@ -25,40 +25,24 @@ this.savePlaylist = this.savePlaylist.bind(this);
 this.search = this.search.bind(this);
 };
 
-// add the track if it is not already in the playlist
-/* addTrack(track){
-    if (this.state.playlistTracks.find(savedTrack => savedTrack.id === track.id)){
-      return;
-    } else {
-      let tracks = [...this.state.playlistTracks]; // ES6 spread operator
-      tracks.push(track);
-      this.setState({playlistTracks: tracks});
-    }
-  } */
-
   addTrack(track) {
     if (this.state.playlistTracks.indexOf(track) === -1) {
       this.setState({playlistTracks: this.state.playlistTracks.concat(track)});
     }
   }
 
-
-
-// removes a song from a custom playlist when the user selects the - sign inside of a rendered track
 removeTrack(track) {
  let tracks = this.state.playlistTracks;
  tracks = tracks.filter(song => song.id !== track.id);
      this.setState({playlistTracks: tracks})
 }
 
-// allows user to update the name of their playlist
 updatePlaylistName(name) {
  this.setState({
    playlistName: name
  })
 }
 
-// saves playlist to user's Spotify account
 savePlaylist(){
   let playlistName = this.state.playlistName;
   let trackURIs = this.state.playlistTracks.map(track => track.uri);
@@ -69,7 +53,6 @@ savePlaylist(){
     });
 }
 
-// searches Spotify
 search(term) {
   Spotify.search(term).then(searchTracks => (this.setState({searchResults: searchTracks})
   ) )
