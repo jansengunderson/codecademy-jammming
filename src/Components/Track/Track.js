@@ -19,7 +19,6 @@ removeTrack() {
   this.props.onRemove(this.props.track);
 }
 
-// method to change + and - symbols
 renderAction() {
   if (this.props.isRemoval) {
     return  (<a className="Track-action" onClick={this.removeTrack}>-</a>);
