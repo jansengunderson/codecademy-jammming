@@ -66,11 +66,6 @@ savePlaylist(){
      this.setState({
       playlistName: 'New Playlist',
       playlistTracks : [],
-    }).then(success => {
-      this.setState({saved: true})
-      setTimeout(() => {
-        this.setState({saved: false})
-      }, 2000);
     });
 }
 
@@ -88,7 +83,7 @@ render() {
           <SearchBar onSearch={this.search}/>
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
-            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onSave={this.savePlaylist} savedStatus={this.state.saved}/>
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} onNameChange={this.updatePlaylistName} onSave={this.savePlaylist}/>
           </div>
         </div>
       </div>
