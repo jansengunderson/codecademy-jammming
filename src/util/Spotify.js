@@ -1,6 +1,7 @@
 let accessToken;
 let expiresIn;
 const client_id = '6dd8b965299942f9a95c080c5c4d8ee0';
+// const redirect_uri = 'http://localhost:3000/';
 const redirect_uri = 'https://jammming-jg.herokuapp.com/';
 
 const Spotify = {
@@ -40,6 +41,7 @@ const Spotify = {
               Name: track.name,
               Artist: track.artists[0].name,
               Album: track.album.name,
+              Images: track.album.images[0].url,
               uri: track.uri
             }
           })

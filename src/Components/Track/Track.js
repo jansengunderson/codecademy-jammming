@@ -34,6 +34,10 @@ renderAction() {
   <div className="Track-information">
     <h3>{this.props.track.Name}</h3>
     <p>{this.props.track.Artist} | {this.props.track.Album}</p>
+
+  </div>
+  <div className="Track-image">
+    <a href={this.props.track.Images} target='_blank'><img src={this.props.track.Images} alt={this.props.track.Album}/></a>
   </div>
   {this.renderAction()}
 </div>
